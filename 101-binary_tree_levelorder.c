@@ -22,7 +22,7 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 	q_node *head = NULL, *tail = NULL, *current = NULL;
 	binary_tree_t *b_tree_node = NULL;
 
-	if (!tree)
+	if (!tree || !func)
 		return;
 	head = enqueue((binary_tree_t *)tree, &tail);
 	current = head;
