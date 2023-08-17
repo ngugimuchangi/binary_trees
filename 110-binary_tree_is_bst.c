@@ -31,7 +31,7 @@ int binary_tree_is_bst(const binary_tree_t *tree)
 
 	while (current->next)
 	{
-		if (current->b_tree_node->n > current->next->b_tree_node->n)
+		if (current->b_tree_node->n >= current->next->b_tree_node->n)
 		{
 			free_queue(head);
 			return (0);
