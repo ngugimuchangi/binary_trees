@@ -28,6 +28,19 @@ typedef struct binary_tree_s avl_t;
 /* Max Binary Heap */
 typedef struct binary_tree_s heap_t;
 
+/**
+ * struct queue_node - Binary tree node
+ * Description: This structure is used to store a node in a queue
+ *
+ * @b_tree_node: Pointer to the binary tree node
+ * @next: Pointer to the next node
+ */
+typedef struct queue_node
+{
+	binary_tree_t *b_tree_node;
+	struct queue_node *next;
+} q_node;
+
 /* Print function */
 void binary_tree_print(const binary_tree_t *tree);
 
