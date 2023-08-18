@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <stdio.h>
 #include "binary_trees.h"
 
 bst_t *inorder_successor(bst_t *node);
