@@ -7,9 +7,10 @@
  */
 bst_t *array_to_bst(int *array, size_t size)
 {
+	bst_t *tree = NULL;
+
 	if (!array || size == 0)
 		return (NULL);
-	bst_t *tree = NULL;
 	size_t i;
 
 	for (i = 0; i < size; i++)
