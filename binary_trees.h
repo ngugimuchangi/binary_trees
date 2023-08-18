@@ -75,4 +75,6 @@ bst_t *bst_insert(bst_t **tree, int value);
 void create_queue(binary_tree_t *tree, q_node **head, q_node **tail,
 				  q_node *(*func)(binary_tree_t *, q_node **, q_node **));
 bst_t *array_to_bst(int *array, size_t size);
+bst_t *bst_search(const bst_t *tree, int value);
+
 #endif /* BINARY_TREES_H */
