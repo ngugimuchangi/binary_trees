@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <stdio.h>
 #include "binary_trees.h"
 
 q_node *enqueue(binary_tree_t *node, q_node **head, q_node **tail);
