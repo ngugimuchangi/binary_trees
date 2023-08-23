@@ -70,19 +70,20 @@ avl_t *rebalance(avl_t *tree, avl_t *node)
 		return (NULL);
 
 	balance_factor = binary_tree_balance(tree);
-	/* Left Left Case */
+
+	/* left-left case */
 	if (balance_factor > 1 && tree->left->n > node->n)
 		return (binary_tree_rotate_right(tree));
-	/* Left Right Case */
+	/* left-right case */
 	if (balance_factor > 1 && tree->left->n < node->n)
 	{
 		tree->left = binary_tree_rotate_left(tree->left);
 		return (binary_tree_rotate_right(tree));
 	}
-	/* Right Right Case */
+	/* right-right Case */
 	if (balance_factor < -1 && tree->right->n < node->n)
 		return (binary_tree_rotate_left(tree));
-	/* Right Left Case */
+	/* right-left Case */
 	if (balance_factor < -1 && tree->right->n > node->n)
 	{
 		tree->right = binary_tree_rotate_right(tree->right);
