@@ -19,7 +19,7 @@ This is project to explore the following concepts:
 ## Compiling
 
 ```
-$ gcc -Wall -Werror -Wextra -pedantic --std=c89 *.c -o <output file name>
+$ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o <output file name>
 ```
 
 ## File Descriptions
