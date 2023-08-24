@@ -5,6 +5,8 @@ int node_count(const binary_tree_t *tree);
 void max_heapify(heap_t **arr, int index, int size);
 void max_heap_to_array(heap_t **arr, heap_t *root, int index, int size);
 heap_t *array_to_max_heap(heap_t **arr, heap_t *parent, int index, int size);
+heap_t *ins_max_heap(heap_t *node, heap_t *new_node, int index,
+					 int new_node_index);
 
 /**
  * heap_insert - Inserts a value into a Max Binary Heap
@@ -14,8 +16,8 @@ heap_t *array_to_max_heap(heap_t **arr, heap_t *parent, int index, int size);
  */
 heap_t *heap_insert(heap_t **root, int value)
 {
-	int i, size;
-	heap_t **nodes_array = NULL, *new_node = NULL;
+	int size;
+	heap_t *new_node = NULL, *temp = NULL;
 
 	if (!root)
 		return (NULL);
@@ -25,7 +27,8 @@ heap_t *heap_insert(heap_t **root, int value)
 		return (NULL);
 
 	size = node_count(*root) + 1;
-	nodes_array = malloc(sizeof(heap_t **) * size);
+	/**
+	*nodes_array = malloc(sizeof(heap_t **) * size);
 	if (!nodes_array)
 		return (NULL);
 
@@ -34,10 +37,22 @@ heap_t *heap_insert(heap_t **root, int value)
 
 	for (i = (size / 2) - 1; i >= 0; i--)
 		max_heapify(nodes_array, i, size);
+	*/
 
-	*root = array_to_max_heap(nodes_array, NULL, 0, size);
-	free(nodes_array);
-	return (new_node);
+	/**
+	 *root = array_to_max_heap(nodes_array, NULL, 0, size);
+	 *free(nodes_array);
+	 */
+	*root = ins_max_heap(*root, new_node, 0, size - 1);
+	temp = new_node;
+
+	while (temp->parent && temp->n > temp->parent->n)
+	{
+		temp->n = temp->parent->n;
+		temp->parent->n = value;
+		temp = temp->parent;
+	}
+	return (temp);
 }
 
 /**
@@ -52,6 +67,34 @@ int node_count(const heap_t *tree)
 	return (1 + node_count(tree->left) + node_count(tree->right));
 }
 
+/**
+ * ins_max_heap - Inserts a value into a Max Binary Heap
+ * @node: Pointer to the root node of the Heap to insert the value
+ * @new_node: Value to store in the node to be inserted
+ * @index: Index of current node
+ * @new_node_index: Index of new node
+ * Return: Pointer to the created node, or NULL on failure
+ */
+heap_t *ins_max_heap(heap_t *node, heap_t *new_node,
+					 int index, int new_node_index)
+{
+	if (index > new_node_index)
+		return (NULL);
+	if (index == new_node_index)
+		return (new_node);
+
+	node->left = ins_max_heap(node->left, new_node,
+							  index * 2 + 1, new_node_index);
+	if (node->left)
+		node->left->parent = node;
+
+	node->right = ins_max_heap(node->right, new_node,
+							   index * 2 + 2, new_node_index);
+	if (node->right)
+		node->right->parent = node;
+
+	return (node);
+}
 /**
  * max_heap_to_array - Creates an array of nodes from a Max Binary Heap
  *
