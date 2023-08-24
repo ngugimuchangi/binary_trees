@@ -36,6 +36,7 @@ heap_t *heap_insert(heap_t **root, int value)
 		heapify(nodes_array, i, node_count);
 
 	*root = create_heap(nodes_array, NULL, 0, node_count);
+	free(nodes_array);
 	return (new_node);
 }
 
