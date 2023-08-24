@@ -315,11 +315,6 @@ $ gcc -Wall -Werror -Wextra -pedantic --std=c89 *.c -o <output file name>
   - Inserting the value `n`
   - Removing the node with the value `n`
   - Searching for a node in a BST of size `n`
-  - What are the worst case time complexities of those operations on a Binary
-    Search Tree (one answer per line):
-  - Inserting the value `n`
-  - Removing the node with the value `n`
-  - Searching for a node in a BST of size `n`
 
 ### [30. Is AVL](./120-binary_tree_is_avl.c)
 
@@ -390,11 +385,6 @@ $ gcc -Wall -Werror -Wextra -pedantic --std=c89 *.c -o <output file name>
   - Inserting the value `n`
   - Removing the node with the value `n`
   - Searching for a node in an AVL tree of size `n`
-  - What are the worst case time complexities of those operations on an AVL Tree
-    (one answer per line):
-  - Inserting the value `n`
-  - Removing the node with the value `n`
-  - Searching for a node in an AVL tree of size `n`
 
 ### [36. Is Binary heap](./130-binary_tree_is_heap.c)
 
@@ -453,11 +443,6 @@ $ gcc -Wall -Werror -Wextra -pedantic --std=c89 *.c -o <output file name>
 
 - What are the average time complexities of those operations on a Binary Heap
   (one answer per line):
-  - Inserting the value `n`
-  - Extracting the root node
-  - Searching for a node in a binary heap of size `n`
-  - What are the average time complexities of those operations on a Binary Heap
-    of size `n` (one answer per line):
   - Inserting the value `n`
   - Extracting the root node
   - Searching for a node in a binary heap of size `n`
