@@ -1,8 +1,9 @@
 #include <stdlib.h>
 #include "binary_trees.h"
+#include <stdio.h>
 
 size_t get_node_count(const binary_tree_t *tree);
-heap_t *get_last_node(heap_t *root, size_t size);
+heap_t *get_last_node(heap_t *root, size_t index, size_t size);
 void top_bottom_heapify(heap_t *root);
 
 /**
@@ -23,7 +24,9 @@ int heap_extract(heap_t **root)
 
 	value = (*root)->n;
 	size = get_node_count(*root);
-	last = get_last_node(*root, size);
+	last = get_last_node(*root, 0, size);
+
+	printf("last node: %d\n", last->n);
 
 	(*root)->n = last->n;
 
@@ -53,36 +56,25 @@ size_t get_node_count(const heap_t *tree)
 
 /**
  * get_last_node - Gets the last node of a Max Binary Heap
- * Description: This function gets the last node of a Max Binary Heap by
- * traversing the tree from the root to the last node using the binary
- * representation of the size of the Heap.
- *
- * Example: If the Heap has 6 nodes, its size is 6. The binary representation
- * of 6 is 110. Starting from the root, we traverse the tree to the right
- * child, then to the left child. The last node is the left child of the
- * right child of the root.
  *
  * @root: Pointer to the root node of the Heap
+ * @index: Index of the current node in the binary representation of the size
  * @size: Size of the Heap
  *
  * Return: Pointer to the last node of the Heap
  */
-heap_t *get_last_node(heap_t *root, size_t size)
+heap_t *get_last_node(heap_t *root, size_t index, size_t size)
 {
-	size_t temp_size = size, bit;
 	heap_t *node = root;
 
-	while (node && (node->left || node->right))
-	{
-		temp_size = temp_size << 1;
-		bit = temp_size & size;
-
-		if (bit)
-			node = node->right;
-		else
-			node = node->left;
-	}
-	return (node);
+	if (!root || index >= size)
+		return (NULL);
+	if (index == size - 1)
+		return (node);
+	node = get_last_node(root->left, 2 * index + 1, size);
+	if (node)
+		return (node);
+	return (get_last_node(root->right, 2 * index + 2, size));
 }
 
 /**
@@ -100,22 +92,18 @@ heap_t *get_last_node(heap_t *root, size_t size)
  */
 void top_bottom_heapify(heap_t *root)
 {
-	heap_t *largest = NULL, *current = root;
+	heap_t *largest = root, *current = NULL;
 	int temp;
 
-	while (1)
+	while (largest != current)
 	{
-		largest = current;
+		current = largest;
 		if (current->left && current->left->n > current->n)
 			largest = current->left;
 		if (current->right && current->right->n > largest->n)
 			largest = current->right;
-
-		if (largest == current)
-			break;
 		temp = current->n;
 		current->n = largest->n;
 		largest->n = temp;
-		current = largest;
 	}
 }
