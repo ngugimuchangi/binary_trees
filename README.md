@@ -33,7 +33,7 @@ $ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o <output file name>
 
 - Function to print binary trees
 
-### [Tests](tests)
+### [tests](tests)
 
 - Folder containing the test files for all the tasks.
 
