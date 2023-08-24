@@ -72,7 +72,7 @@ heap_t *get_last_node(heap_t *root, size_t size)
 	size_t temp_size = size, bit;
 	heap_t *node = root;
 
-	while (node->left || node->right)
+	while (node && (node->left || node->right))
 	{
 		temp_size = temp_size << 1;
 		bit = temp_size & size;
