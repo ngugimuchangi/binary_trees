@@ -29,6 +29,14 @@ $ gcc -Wall -Werror -Wextra -pedantic --std=c89 *.c -o <output file name>
 - Header file containing definitions and prototypes for all types and functions
   written for the project.
 
+### [binary_tree_print.c](utils/binary_tree_print.c)
+
+- Function to print binary trees
+
+### [Tests](tests)
+
+- Folder containing the test files for all the tasks.
+
 ## Tasks
 
 ### [0. New node](./0-binary_tree_node.c)
