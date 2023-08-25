@@ -34,6 +34,8 @@ int heap_extract(heap_t **root)
 		else
 			last->parent->right = NULL;
 	}
+	else
+		*root = NULL;
 	free(last);
 	top_bottom_heapify(*root);
 	return (value);
