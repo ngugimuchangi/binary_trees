@@ -4,6 +4,7 @@
 int node_count(const binary_tree_t *tree);
 heap_t *ins_max_heap(heap_t *node, heap_t *new_node, int index,
 					 int new_node_index);
+heap_t *bottom_up_heapify(heap_t *node);
 
 /**
  * heap_insert - Inserts a value into a Max Binary Heap
@@ -26,13 +27,7 @@ heap_t *heap_insert(heap_t **root, int value)
 	size = node_count(*root) + 1;
 	*root = ins_max_heap(*root, new_node, 0, size - 1);
 	temp = new_node;
-	while (temp->parent && temp->n > temp->parent->n)
-	{
-		temp->n = temp->parent->n;
-		temp->parent->n = value;
-		temp = temp->parent;
-	}
-	return (temp);
+	return (bottom_up_heapify(new_node));
 }
 
 /**
@@ -74,4 +69,27 @@ heap_t *ins_max_heap(heap_t *node, heap_t *new_node,
 		node->right->parent = node;
 
 	return (node);
+}
+
+/**
+ * bottom_up_heapify - Heapifies a Max Binary Heap bottom-up
+ * Description: This function swaps the value of a node with the value of its
+ * parent while the value of the node is greater than the value of its parent.
+ *
+ * @node: Pointer to the root node of the Heap to heapify
+ * Return: Pointer to the root node of the Heap
+ */
+heap_t *bottom_up_heapify(heap_t *node)
+{
+	heap_t *temp = node;
+	int temp_n;
+
+	while (temp->parent && temp->n > temp->parent->n)
+	{
+		temp_n = temp->n;
+		temp->n = temp->parent->n;
+		temp->parent->n = temp_n;
+		temp = temp->parent;
+	}
+	return (temp);
 }
