@@ -3,7 +3,7 @@
 
 size_t get_node_count(const binary_tree_t *tree);
 heap_t *get_last_node(heap_t *root, size_t index, size_t size);
-void top_bottom_heapify(heap_t *root);
+void top_down_heapify(heap_t *root);
 
 /**
  * heap_extract - Extracts the root node of a Max Binary Heap
@@ -37,7 +37,7 @@ int heap_extract(heap_t **root)
 	else
 		*root = NULL;
 	free(last);
-	top_bottom_heapify(*root);
+	top_down_heapify(*root);
 	return (value);
 }
 
@@ -77,7 +77,7 @@ heap_t *get_last_node(heap_t *root, size_t index, size_t size)
 }
 
 /**
- * top_bottom_heapify - Moves the node at the top of the tree down to its
+ * top_down_heapify - Moves the node at the top of the tree down to its
  * correct position in the Max Binary Heap
  *
  * Description: This function compares the value of the current node with the
@@ -89,7 +89,7 @@ heap_t *get_last_node(heap_t *root, size_t index, size_t size)
  * @root: Pointer to the root node of the Heap
  * Return: Nothing
  */
-void top_bottom_heapify(heap_t *root)
+void top_down_heapify(heap_t *root)
 {
 	heap_t *largest = root, *current = NULL;
 	int temp;
