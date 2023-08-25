@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include "binary_trees.h"
-#include <stdio.h>
 
 size_t get_node_count(const binary_tree_t *tree);
 heap_t *get_last_node(heap_t *root, size_t index, size_t size);
@@ -25,8 +24,6 @@ int heap_extract(heap_t **root)
 	value = (*root)->n;
 	size = get_node_count(*root);
 	last = get_last_node(*root, 0, size);
-
-	printf("last node: %d\n", last->n);
 
 	(*root)->n = last->n;
 
