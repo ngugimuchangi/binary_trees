@@ -15,7 +15,7 @@ heap_t *bottom_up_heapify(heap_t *node);
 heap_t *heap_insert(heap_t **root, int value)
 {
 	int size;
-	heap_t *new_node = NULL, *temp = NULL;
+	heap_t *new_node = NULL;
 
 	if (!root)
 		return (NULL);
@@ -26,7 +26,7 @@ heap_t *heap_insert(heap_t **root, int value)
 
 	size = node_count(*root) + 1;
 	*root = ins_max_heap(*root, new_node, 0, size - 1);
-	temp = new_node;
+
 	return (bottom_up_heapify(new_node));
 }
 
