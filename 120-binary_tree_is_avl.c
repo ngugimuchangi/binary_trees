@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "binary_trees.h"
 
 int is_balanced(const binary_tree_t *tree, int *height);
@@ -74,14 +75,4 @@ int is_bst(const binary_tree_t *tree, int min, int max)
 int max(int a, int b)
 {
 	return (a > b ? a : b);
-}
-
-/**
- * abs - returns the absolute value of an integer
- * @n: integer
- * Return: absolute value of n
- */
-int abs(int n)
-{
-	return (n < 0 ? -n : n);
 }
