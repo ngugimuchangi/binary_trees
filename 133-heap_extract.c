@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "binary_trees.h"
 
-size_t get_node_count(const binary_tree_t *tree);
+size_t get_node_count(const heap_t *tree);
 heap_t *get_last_node(heap_t *root, size_t index, size_t size);
 void top_down_heapify(heap_t *root);
 
