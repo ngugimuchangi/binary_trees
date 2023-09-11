@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "binary_trees.h"
 
-int node_count(const binary_tree_t *tree);
+int node_count(const heap_t *tree);
 heap_t *ins_max_heap(heap_t *node, heap_t *new_node, int index,
 					 int new_node_index);
 heap_t *bottom_up_heapify(heap_t *node);
