@@ -58,6 +58,7 @@ void create_queue(binary_tree_t *tree, q_node **head, q_node **tail,
 	func(tree, head, tail);
 	create_queue(tree->right, head, tail, func);
 }
+
 /**
  * enqueue - adds a node to the end of a queue
  * @node: pointer to the binary tree node
